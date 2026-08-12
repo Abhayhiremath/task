@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+        }
+
+        /* Navbar */
+        .navbar {
+            height: 60px;
+            background: #007bff;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .navbar h2 {
+            font-size: 22px;
+        }
+
+        .logout {
+            background: white;
+            color: #007bff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout:hover {
+            background: #e9ecef;
+        }
+
+        /* Main Content */
+        .container {
+            padding: 40px;
+        }
+
+        .welcome {
+            margin-bottom: 30px;
+        }
+
+        .welcome h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #666;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .card button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #0056b3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <h2>My Dashboard</h2>
+
+        <button class="logout" onclick="logout()">
+            Logout
+        </button>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="container">
+
+        <div class="welcome">
+            <h1>Welcome, Abhay 👋</h1>
+            <p>Here is your dashboard overview.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Profile</h3>
+                <p>View and manage your personal profile information.</p>
+                <button>View Profile</button>
+            </div>
+
+            <div class="card">
+                <h3>Projects</h3>
+                <p>Check your projects and track your progress.</p>
+                <button>View Projects</button>
+            </div>
+
+            <div class="card">
+                <h3>Settings</h3>
+                <p>Update your account settings and preferences.</p>
+                <button>Settings</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function logout() {
+            alert("You have been logged out!");
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>
