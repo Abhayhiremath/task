@@ -1,36 +1,53 @@
-```java
-import java.util.Scanner;
+import java.io.Console;
 
 public class LoginPage {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Console console = System.console();
 
-        // Stored username and password
         String correctUsername = "admin";
         String correctPassword = "1234";
 
-        System.out.println("===== LOGIN PAGE =====");
+        int attempts = 3;
+        boolean loginSuccessful = false;
 
-        System.out.print("Enter Username: ");
-        String username = sc.nextLine();
+        System.out.println("================================");
+        System.out.println("          LOGIN PAGE");
+        System.out.println("================================");
 
-        System.out.print("Enter Password: ");
-        String password = sc.nextLine();
+        for (int i = 1; i <= attempts; i++) {
 
-        // Check login details
-        if (username.equals(correctUsername) &&
-            password.equals(correctPassword)) {
+            String username = console.readLine("Enter Username: ");
+            char[] passwordArray = console.readPassword("Enter Password: ");
+            String password = new String(passwordArray);
 
-            System.out.println("\nLogin Successful!");
-            System.out.println("Welcome, " + username);
+            if (username.equals(correctUsername) &&
+                password.equals(correctPassword)) {
 
-        } else {
-            System.out.println("\nInvalid Username or Password!");
+                System.out.println("\nLogin Successful!");
+                System.out.println("Welcome, " + username);
+
+                loginSuccessful = true;
+                break;
+
+            } else {
+
+                int remaining = attempts - i;
+
+                if (remaining > 0) {
+                    System.out.println("\nInvalid Username or Password!");
+                    System.out.println("Attempts remaining: " + remaining);
+                    System.out.println();
+                }
+            }
         }
 
-        sc.close();
+        if (!loginSuccessful) {
+            System.out.println("\n================================");
+            System.out.println("Account temporarily locked!");
+            System.out.println("Too many failed login attempts.");
+            System.out.println("================================");
+        }
     }
 }
-```
